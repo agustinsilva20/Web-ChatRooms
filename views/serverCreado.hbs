@@ -1,0 +1,27 @@
+{{#if yaExiste}}
+  <h2 class="proyecto server1">Ya existe un proyecto con ese nombre</h2>
+{{/if}}
+
+{{#if error}}
+  <h2 class="proyecto server1">No encontramos la informacion de tu usuario</h2>
+  <h2 class="proyecto server1">Vuelva a iniciar sesion e intente devuelta</h2>
+{{/if}}
+
+{{#if ok}}
+  <h2 class="proyecto server1">¡Felicidades haz creado un proyecto!</h2>
+
+{{/if}}
+
+{{#if ok}}
+  <h2 class="proyecto server1">¡Felicidades haz creado un proyecto!</h2>
+
+{{/if}}
+
+
+
+{{#if yaTiene}}
+  <h2 class="proyecto server1">Su usuario ya tiene asignado un proyecto</h2>
+  <h2 class="proyecto server1">Abandona tu proyecto e intentalo denuevo</h2>
+{{/if}}
+
+<a href="/login">Return</a>

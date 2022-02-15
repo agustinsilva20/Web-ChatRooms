@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href='/stylesheets/estilos.css'>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="contenedor">
+        <h3 id="lbl_login">Iniciar Sesión</h3>
+        {{#if errorPassword}}
+        <h3 style="color:red" class="errorLogin">Contraseña incorrecta, intentalo denuevo.</h1>
+        {{/if}}
+        {{#if errorCuenta}}
+        <h3 style="color:red" class="errorLogin">La cuenta no existe. </h1>
+        {{/if}}
+        
+        <div class="formulario">
+            
+            <form action="kngapp" method="POST">
+                <h2 class="lbl_formulario">Correo Electronico</h2>
+                <input type="email" id="correo" name="correo"  class="ingresar" placeholder="nombre@correo.com"><br><br>
+                <h2 class="lbl_formulario">Contraseña</h2>
+                <input type="text" id="password" name="password" class="ingresar" maxlength="10" placeholder="Contraseña"><br><br>
+                <input type="submit" value="Iniciar Sesion" class="boton">
+            
+            
+        </div>
+        <h5 class="lbl_recupero recuperar">¿Olvidaste tu contraseña?</h5>
+        <div class="unete">
+            <h5 class="lbl_recupero">¿Aun no eres parte?</h5>
+            <a href="/register"><h5 class="lbl_recupero crear">Crea tu cuenta</h5></a>
+        </div>
+        
+    </div>
+    
+  
+    
+</body>
+</html>

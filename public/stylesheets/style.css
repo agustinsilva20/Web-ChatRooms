@@ -1,0 +1,37 @@
+/*
+VIOLETA CLARO: #23272a
+VIOLETA OSCURO: #23272a;
+*/
+*{
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    margin:0;
+    padding:0 !important;
+}
+
+body{
+    background-color:#581696;
+}
+
+.titulo{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    text-shadow: 1px 1px 1px gray;
+    margin-top:1rem;
+}
+
+.subtitulo{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top:1rem;
+    
+}
+.subtitulo p{
+    margin-bottom: 0.5rem;
+}

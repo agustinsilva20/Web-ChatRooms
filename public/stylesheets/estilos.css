@@ -1,0 +1,141 @@
+/*
+VIOLETA CLARO: #7289da;
+VIOLETA OSCURO: #23272a;
+*/
+*{
+    font-family: 'Roboto', sans-serif;
+    color:#23272a;
+    margin:0;
+    padding:0 !important;
+}
+body{
+    /*background-color:#7289da;*/
+    background-color: #040714;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    padding:0 ;
+
+
+}
+
+.contenedor{
+    background-color: white;
+    width: 25%;
+    height:450px;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.452);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top:-3rem;
+
+
+   
+}
+
+.contenedor2{
+    background-color: white;
+    width: 25%;
+    height:550px;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.452);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top:-3rem;
+
+
+   
+}
+#lbl_login{
+    font-size: 2rem;
+    margin-top:2rem;
+    text-align: center;
+}
+.formulario{
+    margin-top:3rem;
+    width:80%;
+    display:flex;
+    flex-direction: column;
+    
+}
+.lbl_formulario{
+    font-size: 1rem;
+    
+}
+.ingresar{
+    width:100%;
+    margin-top: 0.5rem;
+    height: 1.7rem;
+    border-radius: 0;
+    border:1px solid rgba(54, 54, 54, 0.5);
+    padding-left:1rem;
+   
+}
+
+.ingresar:focus{
+    border:1px solid rgba(128, 128, 128, 0.5);
+    outline: none
+}
+
+.boton{
+    background-color:#6d63ff;
+    width:100%;
+    margin:0;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    cursor:pointer;
+    transition: ease 0.5s;
+    border-bottom-color:none;
+    border:none;
+    color:white;
+    
+}
+
+.boton:hover{
+    background-color:#857dfc
+    ;}
+.boton p{
+    color:white;
+}
+
+.lbl_recupero{
+
+    margin-top: 1rem;
+
+}
+
+.unete{
+    display:flex;
+    justify-content: center;
+}
+.crear{
+    color:#6d63ff;
+    margin-left:0.5rem;
+    cursor:pointer;
+    transition: color 0.5s;
+
+}
+.crear:hover{
+    color:rgba(17, 13, 78, 0.774);
+    
+}
+.recuperar{
+    cursor:pointer;
+}
+.errorLogin{
+    margin-top:1rem;
+}
+
+
+
+

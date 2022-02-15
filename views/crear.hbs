@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href='/stylesheets/estilos.css'>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="contenedor2">
+        <h3 id="lbl_login">Crear Cuenta</h3>
+        {{#if error}}
+        <h3 style="color:red">Los datos son incorrectos o el correo ya esta en uso</h1>
+        {{/if}}
+        
+        <div class="formulario">
+            
+            <form action="/register" method="POST">
+                <h2 class="lbl_formulario">Nombre</h2>
+                <input type="text" id="nombre" name="nombre"  class="ingresar" placeholder="nombre"><br><br>
+                <h2 class="lbl_formulario">Apellido</h2>
+                <input type="text" id="apellido" name="apellido"  class="ingresar" placeholder="apellido"><br><br>
+                <h2 class="lbl_formulario">Correo Electronico</h2>
+                <input type="email" id="correo" name="correo"  class="ingresar" placeholder="nombre@correo.com"><br><br>
+                <h2 class="lbl_formulario">Contraseña</h2>
+                <input type="text" id="password" name="password" class="ingresar" maxlength="8" placeholder="Contraseña"><br><br>
+                <input type="submit" value="Registrarse" class="boton">
+            
+            
+        </div>
+        <h5 class="lbl_recupero recuperar">¿Olvidaste tu contraseña?</h5>
+        <div class="unete">
+            <h5 class="lbl_recupero">¿Ya tienes cuenta?</h5>
+            <a href="/login"><h5 class="lbl_recupero crear">Inicia Sesion</h5></a>
+        </div>
+        
+    </div>
+    
+  
+    
+</body>
+</html>

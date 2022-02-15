@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositorio</title>
+    <link rel="stylesheet" href='/stylesheets/main.css'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+             crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+        <h1 class="titulo">KNG: Administrador de proyectos BETA</h1>
+    </header>
+    <div class="cuerpo">
+        
+        <div class="barraNavegacion">
+            <div class="proyectos">
+                <h3 class="violeta">TU PROYECTOS</h3>
+                <h3 id="lbl_protectos"></h3>
+
+                {{#if user.servidor}}
+                <h5 class="proyecto server1">PROJECT: {{nameServer}}</h5>
+                <h5 class="violeta">USUARIOS MIEMBROS</h5>
+                {{#each usuarios}}
+		        <h5 class="proyecto server1">User {{id_usuario}}</h5>
+	            {{/each}}
+
+                {{/if}}
+
+                {{#if servers }}
+                <h5 class="proyecto server6">AUN NO FORMAS PARTE DE NINGUN PROYECTO</h5>
+                {{/if}}
+
+            </div>
+            <div class="navegacion">
+
+                <form action="http://localhost:3000/kngapp/changelog/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg">#CHANGELOG</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/lluviaIdeas/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg lluvia">#LLUVIA DE IDEAS</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/anotaciones/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg anotaciones">#ANOTACIONES</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/tareasRealizar/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg tareas_realizar">#TAREAS A REALIZAR</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/tareasFinalizadas/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg tareas_finalizadas">#TAREAS FINALIZADAS</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/testear/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg testear">#ACTIVIDADES A TESTEAR</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/linksUtiles/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg links">#LINKS UTILES</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/otros/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg otros">#OTROS</button> 
+                </form> 
+
+                <form action="http://localhost:3000/kngapp/offtopic/{{user.id}}" method="post"> 
+                <button type="submit" name="id" value="{{user.id}}" class="btn-naveg offtopic">#OFFTOPIC</button> 
+                </form> 
+
+                
+                
+            </div>
+            <div class="crearUnir">
+
+                    <h5 class="lbl_crearUnir sepizq izq">CREAR PROYECTO</h5>
+                
+              
+                    <h5 class="lbl_crearUnir der">UNIRSE A PROYECTO</h5>
+                
+            </div>
+
+
+        </div>
+        <div class="chat">
+            <div class="infoSala">
+               
+                    <p>Proyecto numero: {{nameServer}}</p>
+              
+                
+                <p>Contraseña: {{contra}}</p>
+                <p>Canal: #{{canal}}</p>
+            </div>
+            {{#if serverCreado }}
+                <div class="notificaciones">
+               
+                    <p>Haz creado el servidor: {{nameServer}}</p>
+                </div>
+            {{/if}}
+
+            {{#if serverUnido }}
+                <div class="notificaciones">
+               
+                    <p>Te haz unido a: {{nameServer}}</p>
+                </div>
+            {{/if}}
+            
+            
+            <div class="conversacion" id="chats">
+                <div class="crearSala invisible">
+                    <h1 class="lbl_formulario2">CREAR UN PROYECTO</h1>
+                    <br>
+                    <br>
+                    <form action="serverCreado" method="POST">
+                        
+                        <h2 class="lbl_formulario2">Nombre del proyecto</h2>
+                        <input type="text" id="proyectoCreacion" name="proyectoCreacion"  class="ingresar2" placeholder="tu proyecto"><br><br>
+                        <h2 class="lbl_formulario2">Contraseña del proyecto</h2>
+                        <input type="text" id="passwordCreacion" name="passwordCreacion" class="ingresar2" placeholder="Contraseña"><br><br>
+                        <h2 class="lbl_formulario2 invisible">ID</h2>
+                        <input type="text" id="id" name="id"  class="ingresar2 invisible" placeholder="apellido" value="{{user.id}}"><br><br>
+                        <h2 class="lbl_formulario2 invisible">Correo Electronico</h2>
+                        <input type="email" id="correoCreacion" name="correoCreacion"  class="ingresar2 invisible" placeholder="nombre" value="{{user.mail}}"><br><br>
+                        <h2 class="lbl_formulario2 invisible">Creador</h2>
+                        <input type="text" id="apellidoCreacion" name="apellidoCreacion"  class="ingresar2 invisible" placeholder="apellido" value="{{user.nombre}} {{user.apellido}}"><br><br>
+                        <input type="submit" value="Crear servidor" class="boton lbl_crearUnir sepizq botonCrearS">
+                    </form>
+                    
+                    
+                </div>
+
+                <div class="unirSala invisible">
+                    <h1 class="lbl_formulario2">UNIRSE A UN PROYECTO</h1>
+                    <br>
+                    <br>
+                    <form action="unirse" method="POST">
+                        
+                        <h2 class="lbl_formulario2">Nombre del proyecto</h2>
+                        <input type="text" id="proyectoUnir" name="proyectoUnir"  class="ingresar2" placeholder="tu proyecto"><br><br>
+                        <h2 class="lbl_formulario2">Contraseña del proyecto</h2>
+                        <input type="text" id="passwordUnir" name="passwordUnir" class="ingresar2" placeholder="Contraseña"><br><br>
+                        <h2 class="lbl_formulario2 invisible">ID</h2>
+                        <input type="text" id="id" name="id"  class="ingresar2 invisible" placeholder="apellido" value="{{user.id}}"><br><br>
+                        <h2 class="lbl_formulario2 invisible">Correo Electronico</h2>
+                        <input type="email" id="correoUnir" name="correoUnir"  class="ingresar2 invisible" placeholder="nombre" value="{{user.mail}}"><br><br>
+                        <h2 class="lbl_formulario2 invisible">Creador</h2>
+                        <input type="text" id="apellidoUnir" name="apellidoUnir"  class="ingresar2 invisible" placeholder="apellido" value="{{user.nombre}} {{user.apellido}}"><br><br>
+                        <input type="submit" value="Unirse" class="boton lbl_crearUnir sepizq botonCrearS">
+                    </form>
+                    
+                    
+                </div>
+
+                <div class="mensajess">
+                    {{#each chats}}
+                    <div class="mensaje">
+                        <p>[{{fecha}}] </p>
+                        <h4 style="color:red" class="userr">{{nombre}}</h4>
+                        <p>: {{mensaje}}</p>
+                    </div>
+		            
+	                {{/each}}
+                </div>
+            </div>
+            <div class="editorTexto">
+            <form action="http://localhost:3000/kngapp/{{canalLink}}/{{user.id}}" method="POST">
+                <input type="text" id="msj" name="msj" class="ingresar" placeholder="Mensaje"><br><br>
+                <input type="email" id="correo" name="correo" placeholder="Mensaje" value="{{user.mail}}" class="enviarCorreo"><br><br>
+                <input type="submit" value="Enviar" class="botonChat" id="btnChat">
+            </form>
+
+            </div>
+
+        </div>
+
+        <div class="navegacion_responsive">
+
+            {{#if servers }}
+                <h5 class="proyecto server6">AUN NO FORMAS PARTE DE NINGUN PROYECTO</h5>
+                <div class="crearUnir">
+
+                    <h5 class="lbl_crearUnir sepizq izq2">CREAR PROYECTO</h5>
+                
+              
+                    <h5 class="lbl_crearUnir der2">UNIRSE A PROYECTO</h5>
+                
+            </div>
+            {{else}}
+                <div class="tituloNavResp">
+                    <h4 style="color:yellow">Elige el canal en el que quieras charlar</h4>
+                </div>
+                <div class="menuResp navegacion_responsive">
+                       <form action="http://localhost:3000/kngapp/changelog/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg">#CHANGELOG</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/lluviaIdeas/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg lluvia">#LLUVIA DE IDEAS</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/anotaciones/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg anotaciones">#ANOTACIONES</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/tareasRealizar/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg tareas_realizar">#TAREAS A REALIZAR</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/tareasFinalizadas/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg tareas_finalizadas">#TAREAS FINALIZADAS</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/testear/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg testear">#ACTIVIDADES A TESTEAR</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/linksUtiles/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg links">#LINKS UTILES</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/otros/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg otros">#OTROS</button> 
+                        </form> 
+
+                        <form action="http://localhost:3000/kngapp/offtopic/{{user.id}}" method="post"> 
+                            <button type="submit" name="id" value="{{user.id}}" class="btn-naveg offtopic">#OFFTOPIC</button> 
+                        </form> 
+                </div>
+            {{/if}}
+
+                
+                
+
+                
+                
+        </div>
+
+    </div>
+
+    <script>
+
+        var crearProyectoBtn=document.querySelector(".izq");
+        var crearProyecto=document.querySelector(".crearSala");
+        var unirProyectoBtn=document.querySelector(".der");
+        var unirSala=document.querySelector(".unirSala")
+        var conversacion=document.querySelector(".mensajess");
+        var infoSala=document.querySelector(".infoSala");
+        var editorTexto=document.querySelector(".editorTexto");
+
+        var crearProyectoBtnResp=document.querySelector(".izq2");
+         var unirProyectoBtnResp=document.querySelector(".der2")
+
+
+        var chat=document.querySelector(".chat");
+
+        crearProyectoBtn.addEventListener("click",()=>{
+            if(crearProyecto.classList.contains("invisible")){
+            unirSala.classList.add("invisible");
+            conversacion.classList.add("invisible");
+            infoSala.classList.add("invisible");
+            editorTexto.classList.add("invisible");
+            crearProyecto.classList.remove("invisible");
+            chat.style.backgroundColor="#23272a";
+
+            
+            
+
+            }
+            else{
+            crearProyecto.classList.add("invisible");
+            conversacion.classList.remove("invisible");
+            infoSala.classList.remove("invisible");
+            editorTexto.classList.remove("invisible");
+            chat.style.backgroundColor="white";
+        }
+        },false)
+
+        unirProyectoBtn.addEventListener("click",()=>{
+            if(unirSala.classList.contains("invisible")){
+            unirSala.classList.remove("invisible");
+            conversacion.classList.add("invisible");
+            infoSala.classList.add("invisible");
+            editorTexto.classList.add("invisible");
+            crearProyecto.classList.add("invisible");
+            chat.style.backgroundColor="#23272a";
+
+            
+            
+
+            }
+            else{
+            unirSala.classList.add("invisible");
+            conversacion.classList.remove("invisible");
+            infoSala.classList.remove("invisible");
+            editorTexto.classList.remove("invisible");
+            chat.style.backgroundColor="white";
+        }
+        },false)
+        
+
+        crearProyectoBtnResp.addEventListener("click",()=>{
+            if(crearProyecto.classList.contains("invisible")){
+            unirSala.classList.add("invisible");
+            conversacion.classList.add("invisible");
+            infoSala.classList.add("invisible");
+            editorTexto.classList.add("invisible");
+            crearProyecto.classList.remove("invisible");
+            chat.style.backgroundColor="#23272a";
+
+            
+            
+
+            }
+            else{
+            crearProyecto.classList.add("invisible");
+            conversacion.classList.remove("invisible");
+            infoSala.classList.remove("invisible");
+            editorTexto.classList.remove("invisible");
+            chat.style.backgroundColor="white";
+        }
+        },false)
+        
+        unirProyectoBtnResp.addEventListener("click",()=>{
+            if(unirSala.classList.contains("invisible")){
+            unirSala.classList.remove("invisible");
+            conversacion.classList.add("invisible");
+            infoSala.classList.add("invisible");
+            editorTexto.classList.add("invisible");
+            crearProyecto.classList.add("invisible");
+            chat.style.backgroundColor="#23272a";
+
+            
+            
+
+            }
+            else{
+            unirSala.classList.add("invisible");
+            conversacion.classList.remove("invisible");
+            infoSala.classList.remove("invisible");
+            editorTexto.classList.remove("invisible");
+            chat.style.backgroundColor="white";
+        }
+        },false)
+
+    </script>
+</body>
+</html>
+
+
+ 
